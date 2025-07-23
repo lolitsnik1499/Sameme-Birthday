@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="tsparticles"></div>
+    <div class="background-video">
+        <video autoplay muted loop playsinline>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-glowing-stage-of-purple-hearts-3362-large.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <header class="hero">
+        <h1>Happy Birthday, My Love 💜</h1>
+        <p>You light up my life more than all the stars in the sky.</p>
+        <a href="#gallery" class="scroll-down">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
+                <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path>
+            </svg>
+        </a>
+    </header>
+
+    <main>
+        <section id="gallery" class="content-section">
+            <h2>Our Cherished Moments</h2>
+            <div class="photo-grid">
+                <div class="photo-card">
+                    <img src="assets/images/photo1.jpg" alt="Memory 1">
+                    <div class="caption">Our first trip</div>
+                </div>
+                <div class="photo-card">
+                    <img src="assets/images/photo2.jpg" alt="Memory 2">
+                    <div class="caption">That beautiful smile</div>
+                </div>
+                <div class="photo-card">
+                    <img src="assets/images/photo3.jpg" alt="Memory 3">
+                    <div class="caption">Silly moments</div>
+                </div>
+                <div class="photo-card">
+                    <img src="assets/images/photo4.jpg" alt="Memory 4">
+                    <div class="caption">Golden hour</div>
+                </div>
+                <div class="photo-card">
+                    <img src="assets/images/photo5.jpg" alt="Memory 5">
+                    <div class="caption">Adventures together</div>
+                </div>
+                <div class="photo-card">
+                    <img src="assets/images/photo6.jpg" alt="Memory 6">
+                    <div class="caption">Just us</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="letter" class="content-section">
+            <h2>A Letter For You</h2>
+            <div class="letter-box">
+                <h3>To my one and only,</h3>
+                <p>
+                    On this special day, I wanted to put into words just a fraction of what you mean to me. Every moment we share is a memory I treasure, and my world is infinitely brighter with you in it. You are my greatest adventure, my calmest harbour, and my absolute everything.
+                </p>
+                <p>
+                    Remember that time we [insert a small, specific memory here]? It’s little moments like that which build the incredible story of us. Watching you laugh is my favourite pastime, and seeing you achieve your dreams fills me with a pride I can't describe.
+                </p>
+                <p>
+                    You are kind, brilliant, and more beautiful than you’ll ever know. I hope your birthday is as wonderful as you are. I love you more with every passing day.
+                </p>
+                <p class="signature">
+                    Yours, forever and always.
+                </p>
+            </div>
+        </section>
+
+        <section id="countdown" class="content-section">
+            <h2>And a little surprise...</h2>
+            <p>Something special is waiting for you.</p>
+            <div class="countdown-timer">
+                <div class="time-block">
+                    <span id="days">00</span>
+                    <label>Days</label>
+                </div>
+                <div class="time-block">
+                    <span id="hours">00</span>
+                    <label>Hours</label>
+                </div>
+                <div class="time-block">
+                    <span id="minutes">00</span>
+                    <label>Minutes</label>
+                </div>
+                <div class="time-block">
+                    <span id="seconds">00</span>
+                    <label>Seconds</label>
+                </div>
+            </div>
+            <div id="surprise-message" class="hidden">
+                <h3>The wait is over!</h3>
+                <p>Your surprise is here. I can't wait to share this moment with you.</p>
+                </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>Forever yours, [Your Name] 💖</p>
+        <a href="YOUR_SPOTIFY_OR_GOOGLE_PHOTOS_LINK_HERE" target="_blank" class="footer-link">Our Playlist</a>
+    </footer>
+
+    <audio id="background-music" loop>
+         <source src="https://cdn.pixabay.com/download/audio/2022/02/14/audio_3439b16526.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-toggle" class="music-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 3V13.55C11.41 13.21 10.73 13 10 13C7.79 13 6 14.79 6 17S7.79 21 10 21 14 19.21 14 17V7H18V3H12Z"></path></svg>
+    </button>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
