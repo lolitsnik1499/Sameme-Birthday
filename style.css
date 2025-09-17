@@ -1,249 +1,234 @@
-/* --- Basic Setup & Variables --- */
-[cite_start]:root { [cite: 1]
-    --bg-color: #1a082d;
-    --primary-color: #f3a6ff;
-    --secondary-color: #a787ff;
-    --glow-color: #e57aff;
-    [cite_start]--text-color: #f0e8ff; [cite: 2]
-    --heading-font: 'Playfair Display', serif;
-    --body-font: 'Poppins', sans-serif;
-    --script-font: 'Dancing Script', cursive;
+/* ---------------------------------- */
+/* GLOBAL STYLES & LAYOUT             */
+/* ---------------------------------- */
+:root {
+    --color-pink: #ffc0cb;       /* Pastel Pink */
+    --color-lavender: #e6e6fa;   /* Pastel Lavender */
+    --color-yellow: #fffacd;     /* Soft Yellow */
+    --color-dark: #333;
+    --font-cute: 'Cherry Bomb One', cursive; /* Kenji-style font */
 }
 
 * {
-    [cite_start]margin: 0; [cite: 3]
-    [cite_start]padding: 0; [cite: 3]
     box-sizing: border-box;
-    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: var(--body-font);
-    [cite_start]overflow-x: hidden; [cite: 4]
-}
-
-/* --- Main Content Wrapper (Starts hidden) --- */
-#main-content {
+    font-family: sans-serif;
+    color: var(--color-dark);
     min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--color-lavender);
 }
 
-/* --- Backgrounds and Particles --- */
-.background-video {
+/* Base style for all sections for fixed full-screen layout and transition */
+section {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    [cite_start]height: 100vh; [cite: 5]
-    object-fit: cover;
-    z-index: -2;
-    opacity: 0.3;
-}
-
-#tsparticles {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    [cite_start]z-index: -1; [cite: 6]
-}
-
-/* --- Hero Section --- */
-.hero {
+    width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    [cite_start]align-items: center; [cite: 7]
+    align-items: center;
     text-align: center;
-    padding: 20px;
-    position: relative;
-    [cite_start]background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 80%); [cite: 7]
+    /* Smooth Transition Properties (Fade + Scale-Up) */
+    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 10; 
 }
 
-.hero h1 {
-    font-family: var(--heading-font);
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    color: var(--primary-color);
-    [cite_start]text-shadow: 0 0 15px var(--glow-color), 0 0 30px var(--glow-color); [cite: 9]
-    [cite_start]animation: fadeInDown 1.5s ease-out; [cite: 9]
+/* Hidden state: scaled down, transparent, and non-interactive */
+.hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+    z-index: 0;
 }
 
-.hero p {
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    margin-top: 20px;
-    max-width: 600px;
-    font-weight: 300;
-    [cite_start]animation: fadeInUp 1.5s ease-out; [cite: 10]
+/* Active state: full size, visible, and interactive */
+.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
+    z-index: 10;
 }
 
-.scroll-down {
-    position: absolute;
-    bottom: 30px;
-    color: white;
-    [cite_start]animation: bounce 2s infinite, fadeIn 2s ease-out; [cite: 11]
-}
-
-.scroll-down svg {
-    [cite_start]transition: transform 0.3s ease; [cite: 12]
-}
-
-.scroll-down:hover svg {
-    [cite_start]transform: translateY(5px); [cite: 13]
-}
-
-/* --- Content Sections --- */
-.content-section {
-    padding: 100px 5%;
-    max-width: 1200px;
-    margin: 0 auto;
-    [cite_start]background: rgba(26, 8, 45, 0.6); [cite: 14]
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    margin-bottom: 50px;
-    [cite_start]box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); [cite: 14]
-    [cite_start]border: 1px solid rgba(255, 255, 255, 0.1); [cite: 15]
-}
-
-h2 {
-    font-family: var(--heading-font);
-    font-size: clamp(2rem, 5vw, 3rem);
-    text-align: center;
-    [cite_start]margin-bottom: 50px; [cite: 16]
-    color: var(--secondary-color);
-    text-shadow: 0 0 10px var(--secondary-color);
-}
-
-/* --- Photo Gallery --- */
-.photo-grid {
-    [cite_start]display: grid; [cite: 17]
-    [cite_start]grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); [cite: 17]
-    gap: 25px;
-}
-
-.photo-card {
-    position: relative;
-    border-radius: 15px;
+/* ---------------------------------- */
+/* 1. COUNTDOWN SECTION STYLES        */
+/* ---------------------------------- */
+#countdown-section {
+    background: linear-gradient(135deg, var(--color-pink) 0%, var(--color-lavender) 100%);
     overflow: hidden;
-    [cite_start]box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); [cite: 18]
-    [cite_start]transition: transform 0.4s ease, box-shadow 0.4s ease; [cite: 18]
+    position: relative;
+    color: white;
 }
 
-[cite_start].photo-card:hover { [cite: 19]
-    transform: translateY(-10px) scale(1.03);
-    [cite_start]box-shadow: 0 0 30px var(--glow-color); [cite: 19]
+.countdown-content {
+    z-index: 20;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-.photo-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    [cite_start]display: block; [cite: 20]
+#countdown-timer {
+    font-size: clamp(2.5em, 8vw, 4em);
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
 }
 
-.photo-card .caption {
+/* Background Animation: Floating Hearts */
+#hearts {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
-    [cite_start]background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); [cite: 21]
-    [cite_start]color: white; [cite: 22]
-    padding: 30px 15px 15px;
-    font-size: 1rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    --heart-color: rgba(255, 255, 255, 0.6);
 }
 
-.photo-card:hover .caption {
+/* Generate multiple hearts using pseudo-elements for a soft animation */
+#hearts::before, #hearts::after {
+    content: '';
+    position: absolute;
+    background-color: var(--heart-color);
+    transform: rotate(-45deg);
+    border-radius: 50% 50% 0 0;
+    animation: floatHeart 15s infinite linear;
+}
+
+#hearts::before {
+    width: 20px; height: 20px;
+    top: 100%; left: 20%;
+    animation-duration: 12s;
+    opacity: 0.7;
+}
+#hearts::after {
+    width: 30px; height: 30px;
+    top: 100%; left: 70%;
+    animation-delay: 6s;
+    animation-duration: 18s;
+    opacity: 0.5;
+}
+
+@keyframes floatHeart {
+    0% { transform: translateY(0vh) rotate(-45deg); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-100vh) rotate(-45deg); opacity: 0; }
+}
+
+
+/* ---------------------------------- */
+/* 2. VIDEO SECTION STYLES            */
+/* ---------------------------------- */
+#video-section {
+    background-color: black;
+    z-index: 5;
+}
+
+#birthday-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    background-color: black;
+}
+
+/* ---------------------------------- */
+/* 3. FINAL MESSAGE SECTION STYLES    */
+/* ---------------------------------- */
+#message-section {
+    background-color: var(--color-yellow);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.message-content {
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+}
+
+#final-message {
+    font-family: var(--font-cute);
+    font-size: clamp(3em, 10vw, 7em);
+    color: #a00040; /* Darker Pink/Maroon for contrast */
+    text-shadow: 5px 5px var(--color-pink), 8px 8px rgba(0,0,0,0.2);
+    margin-bottom: 40px;
+    white-space: nowrap; 
+    user-select: none;
+}
+
+/* Kenji-style Letter Animation Classes (Added by JS) */
+.bounce-wiggle {
+    display: inline-block;
+    position: relative;
+    /* Initial state for slide-up/fade-in */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.bounce-wiggle.animate-in {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* --- Lock Screen and Video Overlay --- */
-#lock-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: black; /* Solid black background */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensure it covers everything */
-    transition: opacity 1s ease-out;
+/* Infinite Bounce and Wiggle Keyframes */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    30% { transform: translateY(-15px) rotate(3deg); }
+    70% { transform: translateY(-5px) rotate(-3deg); }
 }
 
-#surprise-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: black; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999; 
+.bounce-wiggle.bouncing {
+    animation: bounce 1.2s ease-in-out infinite;
 }
 
-#intro-video {
+/* Replay Button */
+#replay-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background-color: var(--color-pink);
+    border: 3px solid var(--color-dark);
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 7px var(--color-dark);
+    transition: transform 0.1s, box-shadow 0.1s;
+    opacity: 0; 
+    transform: translateY(40px);
+}
+
+#replay-button.slide-up.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease-out 1.5s, transform 1s ease-out 1.5s; /* Delay to appear after text */
+}
+
+#replay-button:active {
+    transform: translateY(10px);
+    box-shadow: 0 0 var(--color-dark);
+}
+
+/* Confetti Container */
+#confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Contain the video within the screen */
+    overflow: hidden;
+    z-index: 10;
+    pointer-events: none;
 }
-
-/* --- Countdown Display Style --- */
-.countdown-display {
-    text-align: center;
-    color: white; /* White text for contrast */
-}
-
-#timer-label {
-    font-family: var(--body-font);
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
-    margin-bottom: 20px;
-    font-weight: 300;
-    color: white;
-    text-shadow: none;
-}
-
-.timer-digits {
-    font-family: monospace; 
-    font-size: clamp(3rem, 15vw, 10rem);
-    font-weight: 700;
-    line-height: 1;
-}
-
-.colon {
-    margin: 0 10px;
-}
-
-/* --- Utility Class --- */
-.hidden {
-    display: none !important;
-    opacity: 0;
-}
-
-/* --- Skip Button Style --- */
-#skip-video-btn {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    padding: 10px 20px;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 1px solid white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: var(--body-font);
-    font-size: 1rem;
-    z-index: 1001;
-    transition: background-color 0.3s;
-}
-
-#skip-video-btn:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-}
+/* Confetti/Balloon elements are generated and styled by JavaScript */
