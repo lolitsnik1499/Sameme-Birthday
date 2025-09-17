@@ -3,107 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday, My Love</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
-    
+    <title>A Special Birthday Surprise! 🎂</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div id="lock-screen">
-        <div class="countdown-display">
-            <h2 id="timer-label">Counting down to your surprise...</h2>
-            <div class="timer-digits">
-                <span id="days">00</span><span class="colon">:</span>
-                <span id="hours">00</span><span class="colon">:</span>
-                <span id="minutes">00</span><span class="colon">:</span>
-                <span id="seconds">00</span>
-            </div>
+    <audio id="background-music" loop>
+        <source src="birthday-music.mp3" type="audio/mp3"> 
+        Your browser does not support the audio element.
+    </audio>
+
+    <section id="countdown-section" class="active">
+        <div id="hearts"></div>
+        <div class="countdown-content">
+            <h1>The Surprise Awaits...</h1>
+            <div id="countdown-timer"></div>
         </div>
-    </div>
-    
-    <div id="surprise-video" class="hidden">
-        <video id="intro-video" muted playsinline>
-            <source src="Jojo's Bizarre Adventure_ Ora Ora Ora Compilation.publer.com.MOV" type="video/mp4">
-            Your browser does not support the video tag.
+    </section>
+
+    <section id="video-section" class="hidden">
+        <video 
+            id="birthday-video" 
+            src="Jojo's Bizarre Adventure_ Ora Ora Ora Compilation.publer.com.MOV" 
+            controls 
+            autoplay 
+            muted 
+            playsinline>
         </video>
-        <button id="skip-video-btn" class="hidden">Skip to Site</button>
-    </div>
+    </section>
 
-    <div id="main-content" class="hidden">
-    
-        <div id="tsparticles"></div>
-        <div class="background-video">
-            <video autoplay muted loop playsinline>
-                [cite_start]<source src="https://assets.mixkit.co/videos/preview/mixkit-glowing-stage-of-purple-hearts-3362-large.mp4" type="video/mp4"> [cite: 38]
-            </video>
-        [cite_start]</div> [cite: 39]
+    <section id="message-section" class="hidden">
+        <div id="confetti-container"></div>
+        <div class="message-content">
+            <h1 id="final-message">
+                </h1>
+            <button id="replay-button" class="slide-up">
+                Replay Surprise 🎉
+            </button>
+        </div>
+    </section>
 
-        <header class="hero">
-            [cite_start]<h1>Happy Birthday, My Love </h1> [cite: 39]
-            [cite_start]<p>You light up my life more than all the stars in the sky.</p> [cite: 39]
-            <a href="#gallery" class="scroll-down">
-                [cite_start]<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="48" height="48"> [cite: 39]
-                    <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path>
-                [cite_start]</svg> [cite: 40]
-            </a>
-        </header>
-
-        <main>
-            [cite_start]<section id="gallery" class="content-section"> [cite: 40]
-                <h2>Our Cherished Moments</h2>
-                <div class="photo-grid">
-                    <div class="photo-card">
-                        [cite_start]<img src="assets/images/photo1.jpg" alt="Memory 1"> [cite: 40]
-                        [cite_start]<div class="caption">Our first trip</div> [cite: 41]
-                    </div>
-                    <div class="photo-card">
-                        <img src="assets/images/photo2.jpg" alt="Memory 2">
-                        [cite_start]<div class="caption">That beautiful smile</div> [cite: 42]
-                    </div>
-                    <div class="photo-card">
-                        <img src="assets/images/photo3.jpg" alt="Memory 3">
-                        <div class="caption">Silly moments</div>
-                    </div>
-                    [cite_start]<div class="photo-card"> [cite: 43]
-                        <img src="assets/images/photo4.jpg" alt="Memory 4">
-                        <div class="caption">Golden hour</div>
-                    </div>
-                    [cite_start]<div class="photo-card"> [cite: 44]
-                        <img src="assets/images/photo5.jpg" alt="Memory 5">
-                        <div class="caption">Adventures together</div>
-                    </div>
-                    <div class="photo-card">
-                        [cite_start]<img src="assets/images/photo6.jpg" alt="Memory 6"> [cite: 44]
-                        [cite_start]<div class="caption">Just us</div> [cite: 45]
-                    </div>
-                </div>
-            </section>
-
-            [cite_start]<section id="letter" class="content-section"> [cite: 45]
-                <h2>A Letter For You</h2>
-                <div class="letter-box">
-                    [cite_start]<h3>To my one and only,</h3> [cite: 46]
-                    <p>
-                        [cite_start]On this special day, I wanted to put into words just a fraction of what you mean to me. [cite: 47]
-                        [cite_start]Every moment we share is a memory I treasure, and my world is infinitely brighter with you in it. [cite: 47]
-                        [cite_start]You are my greatest adventure, my calmest harbour, and my absolute everything. [cite: 48]
-                    </p>
-                    <p>
-                        [cite_start]Remember that time we [insert a small, specific memory here]? [cite: 49]
-                        [cite_start]It’s little moments like that which build the incredible story of us. [cite: 50]
-                        [cite_start]Watching you laugh is my favourite pastime, and seeing you achieve your dreams fills me with a pride I can't describe. [cite: 51]
-                    </p>
-                    <p>
-                        [cite_start]You are kind, brilliant, and more beautiful than you’ll ever know. [cite: 52]
-                        I hope your birthday is as wonderful as you are. [cite_start]I love you more with every passing day. [cite: 53]
-                    </p>
-                </div>
-            </section>
-        </main>
-
-    </div> </body>
+    <script src="script.js"></script>
+</body>
 </html>
