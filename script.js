@@ -1,114 +1,113 @@
-document.addEventListener('DOMContentLoaded', () => {
+[cite_start]document.addEventListener('DOMContentLoaded', () => { [cite: 23]
 
     // --- CUSTOMIZATION AREA ---
-    // CUSTOMIZE: Set the date and time for your surprise here
-    // Format: "Month Day, Year HH:MM:SS" (e.g., "August 1, 2025 20:00:00")
-    const countdownDate = "September 25, 2025 19:00:00";
+    // SET HER BIRTHDAY DATE AND TIME HERE (e.g., "October 15, 2025 00:00:00")
+    const targetDateString = "September 25, 2025 19:00:00"; 
     // --- END CUSTOMIZATION AREA ---
 
 
-    // --- Countdown Timer Logic ---
+    // --- Elements ---
+    const lockScreen = document.getElementById('lock-screen');
+    const mainContent = document.getElementById('main-content');
+    const introVideoContainer = document.getElementById('surprise-video');
+    const introVideo = document.getElementById('intro-video');
+    const skipButton = document.getElementById('skip-video-btn');
+    
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
-    const countdownContainer = document.querySelector('.countdown-timer');
-    const surpriseMessage = document.getElementById('surprise-message');
 
-    const targetDate = new Date(countdownDate).getTime();
+    const targetDate = new Date(targetDateString).getTime();
 
-    const countdownInterval = setInterval(() => {
+    // --- Countdown Timer Logic ---
+    const updateCountdown = () => {
         const now = new Date().getTime();
         const distance = targetDate - now;
 
         if (distance < 0) {
-            clearInterval(countdownInterval);
-            countdownContainer.classList.add('hidden');
-            surpriseMessage.classList.remove('hidden');
+            [cite_start]clearInterval(countdownInterval); [cite: 24, 25]
+            lockScreen.classList.add('hidden');
+            playIntroVideo();
             return;
         }
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        [cite_start]const days = Math.floor(distance / (1000 * 60 * 60 * 24)); [cite: 25]
+        [cite_start]const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); [cite: 26]
+        [cite_start]const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); [cite: 27]
+        [cite_start]const seconds = Math.floor((distance % (1000 * 60)) / 1000); [cite: 28]
 
         daysEl.innerText = String(days).padStart(2, '0');
         hoursEl.innerText = String(hours).padStart(2, '0');
-        minutesEl.innerText = String(minutes).padStart(2, '0');
-        secondsEl.innerText = String(seconds).padStart(2, '0');
+        [cite_start]minutesEl.innerText = String(minutes).padStart(2, '0'); [cite: 29]
+        [cite_start]secondsEl.innerText = String(seconds).padStart(2, '0'); [cite: 29]
+    };
 
-    }, 1000);
-
-
-    // --- Background Music Logic ---
-    const music = document.getElementById('background-music');
-    const musicToggle = document.getElementById('music-toggle');
-
-    // Browsers require user interaction to play audio.
-    // We unmute it on the first click.
-    musicToggle.addEventListener('click', () => {
-        if (music.paused) {
-            music.play();
-            musicToggle.classList.add('playing');
-        } else {
-            music.pause();
-            musicToggle.classList.remove('playing');
-        }
-    });
+    [cite_start]const countdownInterval = setInterval(updateCountdown, 1000); [cite: 29]
+    updateCountdown(); 
     
-    // Attempt to play muted on load (for background video effect)
-    music.play().catch(() => {
-        // Autoplay was blocked, user must click to start.
-    });
+    // --- Video Logic ---
+    const playIntroVideo = () => {
+        introVideoContainer.classList.remove('hidden');
+        skipButton.classList.remove('hidden');
+        
+        introVideo.play().catch(error => {
+            console.error("Video autoplay blocked, showing site immediately:", error);
+            showMainContent(); 
+        });
+    };
+    
+    const showMainContent = () => {
+        introVideo.pause(); 
+        introVideoContainer.classList.add('hidden');
+        mainContent.classList.remove('hidden');
+    };
+
+    skipButton.addEventListener('click', showMainContent);
+    introVideo.addEventListener('ended', showMainContent);
 
 
-    // --- tsParticles Configuration for glowing hearts/sparkles ---
-    tsParticles.load("tsparticles", {
+    // --- Placeholder/Cleanup for Music Logic ---
+    [cite_start]const music = document.getElementById('background-music'); [cite: 30]
+    [cite_start]const musicToggle = document.getElementById('music-toggle'); [cite: 30]
+    if (music && musicToggle) {
+        [cite_start]// Browsers require user interaction to play audio. [cite: 31]
+        [cite_start]musicToggle.addEventListener('click', () => { [cite: 32]
+            if (music.paused) {
+                music.play();
+                musicToggle.classList.add('playing');
+            } else {
+                music.pause();
+                musicToggle.classList.remove('playing');
+            }
+        });
+    }
+
+    // --- tsParticles Configuration ---
+    [cite_start]tsParticles.load("tsparticles", { [cite: 34]
         fpsLimit: 60,
         particles: {
-            number: { value: 60, density: { enable: true, value_area: 800 } },
-            color: { value: ["#f3a6ff", "#a787ff", "#ffffff"] },
+            [cite_start]number: { value: 60, density: { enable: true, value_area: 800 } }, [cite: 34]
+            [cite_start]color: { value: ["#f3a6ff", "#a787ff", "#ffffff"] }, [cite: 34]
             shape: {
-                type: "char",
+                [cite_start]type: "char", [cite: 35]
                 character: [{
                     fill: true,
                     font: "Verdana",
                     style: "",
-                    value: ["💖", "✨"],
+                    [cite_start]value: ["\u2764\ufe0f", "\u2665"], // Unicode hearts replacing the original empty string [cite: 36]
                     weight: "400"
                 }]
             },
             opacity: {
                 value: {min: 0.3, max: 0.8},
-                animation: { enable: true, speed: 1, minimumValue: 0.3, sync: false }
+                [cite_start]animation: { enable: true, speed: 1, minimumValue: 0.3, sync: false } [cite: 37]
             },
             size: {
-                value: { min: 8, max: 16 },
-                animation: { enable: true, speed: 3, minimumValue: 8, sync: false }
-            },
-            move: {
-                enable: true,
-                speed: 1,
-                direction: "top",
+                value: {min: 5, max: 15},
                 random: true,
-                straight: false,
-                out_mode: "out",
-                bounce: false,
+                animation: { enable: true, speed: 2, minimumValue: 5, sync: false }
             }
         },
-        interactivity: {
-            detect_on: "canvas",
-            events: {
-                onhover: { enable: true, mode: "bubble" },
-                onclick: { enable: true, mode: "push" },
-                resize: true
-            },
-            modes: {
-                bubble: { distance: 200, duration: 2, opacity: 1, size: 20 },
-                push: { particles_nb: 4 }
-            }
-        },
-        detectRetina: true
     });
 });
